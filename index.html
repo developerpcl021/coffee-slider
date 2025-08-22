@@ -68,8 +68,7 @@
         }
 
         .thumbnail:nth-child(1) {
-
-            transform: translate(-50px,-60px);
+            transform: translate(-50px, -60px);
         }
 
         .thumbnail:nth-child(2) {
@@ -77,7 +76,7 @@
         }
 
         .thumbnail:nth-child(3) {
-            transform: translate(-50px,60px);
+            transform: translate(-50px, 60px);
         }
 
 
@@ -299,16 +298,16 @@
             clone.getBoundingClientRect(); // force reflow
             clone.style.top = (mainRect.top + window.scrollY) + "px";
             clone.style.left = (mainRect.left + window.scrollX) + "px";
-            clone.style.top = rect.top + "px";
-            clone.style.left = rect.left + "px";
+            // clone.style.top = rect.top + "px";
+            // clone.style.left = rect.left + "px";
             clone.style.width = rect.width + "px";
             clone.style.height = rect.height + "px";
             clone.style.opacity = 0;
             // Force browser to recognize initial position
             clone.getBoundingClientRect();
             // Animate to main cup position
-            clone.style.top = mainRect.top + "px";
-            clone.style.left = mainRect.left + "px";
+            // clone.style.top = mainRect.top + "px";
+            // clone.style.left = mainRect.left + "px";
             clone.style.width = mainRect.width + "px";
             clone.style.height = mainRect.height + "px";
             clone.style.opacity = 1;
