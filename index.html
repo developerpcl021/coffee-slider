@@ -257,6 +257,7 @@
         function changeCoffee(element, i) {
             const mainHeading = document.getElementById("main-text");
             const colorText = document.getElementById("colored-text");
+            const mainCoffee = document.getElementById("mainCoffee");
             const textArr = [{
                 heading: "Top Quality Tea and Coffee ",
                 colorWord: "Shop"
@@ -269,12 +270,9 @@
                 colorWord: "Shop",
 
             }];
-            const mainCoffee = document.getElementById("mainCoffee");
+
             const rect = element.getBoundingClientRect();
             const mainRect = mainCoffee.getBoundingClientRect();
-
-
-
             // Clone the clicked thumbnail
             const clone = element.cloneNode(true);
             clone.classList.add("animate-move");
@@ -282,6 +280,13 @@
 
             // Set start position (thumbnail pos)
             // console.log(clone.style)
+            clone.style.top = rect.top + "px";
+            clone.style.left = rect.left + "px";
+            clone.style.width = rect.width + "px";
+            clone.style.height = rect.height + "px";
+            clone.style.opacity = 0;
+            clone.style.rotate = "90deg";
+
             // Object.assign(clone.style, {
             //     top: rect.top + "px",
             //     left: rect.left + "px",
@@ -290,28 +295,17 @@
             //     opacity: 0,
             //     // rotate: "90deg"
             // })
-            // Adjust with scroll offset
-            clone.style.top = (rect.top + window.scrollY) + "px";
-            clone.style.left = (rect.left + window.scrollX) + "px";
 
-            // Animate to main coffee cup position
-            clone.getBoundingClientRect(); // force reflow
-            clone.style.top = (mainRect.top + window.scrollY) + "px";
-            clone.style.left = (mainRect.left + window.scrollX) + "px";
-            // clone.style.top = rect.top + "px";
-            // clone.style.left = rect.left + "px";
-            clone.style.width = rect.width + "px";
-            clone.style.height = rect.height + "px";
-            clone.style.opacity = 0;
+
             // Force browser to recognize initial position
             clone.getBoundingClientRect();
             // Animate to main cup position
-            // clone.style.top = mainRect.top + "px";
-            // clone.style.left = mainRect.left + "px";
+            clone.style.top = mainRect.top + "px";
+            clone.style.left = mainRect.left + "px";
             clone.style.width = mainRect.width + "px";
             clone.style.height = mainRect.height + "px";
             clone.style.opacity = 1;
-            // clone.style.rotate = "0deg";
+            clone.style.rotate = "0deg";
             // Object.assign(clone.style, {
             //     top: mainRect.top + "px",
             //     left: mainRect.left + "px",
@@ -320,6 +314,7 @@
             //     opacity: 1,
             //     rotate: "0deg",
             // })
+
             mainHeading.innerText = textArr[i]?.heading;
             colorText.innerText = textArr[i]?.colorWord;
             animateTextAgain();
@@ -329,6 +324,10 @@
                 clone.remove();
             }, 800);
         }
+
+
+
+
         document.addEventListener("mousemove", function (e) {
             const leafImage = document.getElementById("leafImage");
             const coffeeImage = document.getElementById("coffeeImage");
@@ -352,6 +351,8 @@
             coffeeImage.style.transform = `translate(${-moveX / 2}px, 0px)`;
             bottomLeafs.style.transform = `translate(${-moveX / 2}px, 0px)`;
         });
+
+
     </script>
 </body>
 
