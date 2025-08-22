@@ -273,6 +273,9 @@
             const mainCoffee = document.getElementById("mainCoffee");
             const rect = element.getBoundingClientRect();
             const mainRect = mainCoffee.getBoundingClientRect();
+
+          
+
             // Clone the clicked thumbnail
             const clone = element.cloneNode(true);
             clone.classList.add("animate-move");
@@ -288,6 +291,14 @@
             //     opacity: 0,
             //     // rotate: "90deg"
             // })
+              // Adjust with scroll offset
+            clone.style.top = (rect.top + window.scrollY) + "px";
+            clone.style.left = (rect.left + window.scrollX) + "px";
+
+            // Animate to main coffee cup position
+            clone.getBoundingClientRect(); // force reflow
+            clone.style.top = (mainRect.top + window.scrollY) + "px";
+            clone.style.left = (mainRect.left + window.scrollX) + "px";
             clone.style.top = rect.top + "px";
             clone.style.left = rect.left + "px";
             clone.style.width = rect.width + "px";
@@ -319,10 +330,6 @@
                 clone.remove();
             }, 800);
         }
-
-
-
-
         document.addEventListener("mousemove", function (e) {
             const leafImage = document.getElementById("leafImage");
             const coffeeImage = document.getElementById("coffeeImage");
@@ -346,12 +353,7 @@
             coffeeImage.style.transform = `translate(${-moveX / 2}px, 0px)`;
             bottomLeafs.style.transform = `translate(${-moveX / 2}px, 0px)`;
         });
-
-
     </script>
-
-
-
 </body>
 
 </html>
